@@ -2,59 +2,125 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NutriConecta</title>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<nav class="navbar navbar-dark bg-success">
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <span class="brand-badge">🌱</span>
+                <span>NutriConecta</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/usuarios/listar">Usuários</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/doacoes/listar">Doações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/alimentos/listar">Alimentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/solicitacoes/listar">Solicitações</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero container">
+        <div class="row align-items-center hero-content">
+            <div class="col-lg-6 text-lg-start text-center">
+                <h1 class="hero-title">Bem-vindo ao NutriConecta</h1>
+                <p class="hero-subtitle">Transformamos doações em impacto real com controle, transparência e carinho.</p>
+                <a href="/usuarios/listar" class="btn hero-btn">Começar agora</a>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img th:src="@{/images/alimentos-caixa.jpeg}" alt="Alimentos organizados para doação" class="hero-image img-fluid rounded-4 shadow-sm">
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container py-5">
+    <section class="mb-5">
+        <div class="row gy-4">
+            <div class="col-12 col-md-4">
+                <article class="info-card">
+                    <img th:src="@{/images/doacao-grupo.jpeg}" alt="Doação em grupo" class="info-image img-fluid rounded-4">
+                    <h3 class="info-title mt-4">Rede de Doações</h3>
+                    <p>Conecte doadores e pontos de retirada com facilidade, criando uma jornada mais rápida para quem precisa.</p>
+                </article>
+            </div>
+            <div class="col-12 col-md-4">
+                <article class="info-card">
+                    <img th:src="@{/images/alimentos-caixa.jpeg}" alt="Caixa de alimentos" class="info-image img-fluid rounded-4">
+                    <h3 class="info-title mt-4">Controle de Estoque</h3>
+                    <p>Organize alimentos por categoria e validade, garantindo distribuição eficiente e sem desperdício.</p>
+                </article>
+            </div>
+            <div class="col-12 col-md-4">
+                <article class="info-card">
+                    <img th:src="@{/images/entrega-mao.jpeg}" alt="Entrega segura" class="info-image img-fluid rounded-4">
+                    <h3 class="info-title mt-4">Retirada Segura</h3>
+                    <p>Registre solicitações, agende retiradas e acompanhe cada pedido até a entrega.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="row feature-grid gx-4 gy-4">
+        <div class="col-12 col-md-6 col-xl-3">
+            <article class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Usuários</h3>
+                <p>Gerencie perfis, voluntários e famílias com uma visão clara e rápida.</p>
+                <a href="/usuarios/listar" class="btn btn-outline-success">Acessar</a>
+            </article>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3">
+            <article class="feature-card">
+                <div class="feature-icon">🎁</div>
+                <h3>Doações</h3>
+                <p>Registre doações e acompanhe itens disponíveis para distribuição.</p>
+                <a href="/doacoes/listar" class="btn btn-outline-success">Acessar</a>
+            </article>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3">
+            <article class="feature-card">
+                <div class="feature-icon">🥦</div>
+                <h3>Alimentos</h3>
+                <p>Visualize categorias, quantidades e necessidades de produtos.</p>
+                <a href="/alimentos/listar" class="btn btn-outline-success">Acessar</a>
+            </article>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3">
+            <article class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Solicitações</h3>
+                <p>Acompanhe pedidos de retirada e atendimentos em tempo real.</p>
+                <a href="/solicitacoes/listar" class="btn btn-outline-success">Acessar</a>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="footer text-center">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="/">🥗 NutriConecta</a>
-        <div>
-            <a class="btn btn-outline-light me-2" href="/usuarios/listar">Usuários</a>
-            <a class="btn btn-outline-light me-2" href="/doacoes/listar">Doações</a>
-            <a class="btn btn-outline-light me-2" href="/alimentos/listar">Alimentos</a>
-            <a class="btn btn-outline-light" href="/solicitacoes/listar">Solicitações</a>
-        </div>
+        <p>NutriConecta © 2026 • Conectando alimentos e pessoas com cuidado.</p>
     </div>
-</nav>
-<div class="container mt-5 text-center">
-    <h1 class="display-4 text-success fw-bold">Bem-vindo ao NutriConecta</h1>
-    <p class="lead text-muted">Plataforma de doação e distribuição de alimentos</p>
-    <div class="row mt-4 g-4">
-        <div class="col-md-3">
-            <div class="card border-success shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">👥 Usuários</h5>
-                    <a href="/usuarios/listar" class="btn btn-success mt-2">Acessar</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-success shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">🎁 Doações</h5>
-                    <a href="/doacoes/listar" class="btn btn-success mt-2">Acessar</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-success shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">🥦 Alimentos</h5>
-                    <a href="/alimentos/listar" class="btn btn-success mt-2">Acessar</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-success shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">📋 Solicitações</h5>
-                    <a href="/solicitacoes/listar" class="btn btn-success mt-2">Acessar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</footer>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
