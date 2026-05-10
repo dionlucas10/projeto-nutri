@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alimentos</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Alimentos</h2>
+                <a href="/alimentos/novo" class="btn btn-primary mb-3">Novo Alimento</a>
+                
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="alimento : ${alimentos}">
+                            <td th:text="${alimento.id}"></td>
+                            <td th:text="${alimento.nome}"></td>
+                            <td th:text="${alimento.descricao}"></td>
+                            <td>
+                                <a th:href="@{/alimentos/{id}/editar(id=${alimento.id})}" class="btn btn-sm btn-warning">Editar</a>
+                                <a th:href="@{/alimentos/{id}/deletar(id=${alimento.id})}" class="btn btn-sm btn-danger">Deletar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

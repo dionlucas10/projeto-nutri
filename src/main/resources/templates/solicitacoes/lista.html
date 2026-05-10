@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Solicitações</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Solicitações</h2>
+                <a href="/solicitacoes/novo" class="btn btn-primary mb-3">Nova Solicitação</a>
+                
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="solicitacao : ${solicitacoes}">
+                            <td th:text="${solicitacao.id}"></td>
+                            <td th:text="${solicitacao.descricao}"></td>
+                            <td th:text="${#dates.format(solicitacao.dataSolicitacao, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${solicitacao.status}"></td>
+                            <td>
+                                <a th:href="@{/solicitacoes/{id}/editar(id=${solicitacao.id})}" class="btn btn-sm btn-warning">Editar</a>
+                                <a th:href="@{/solicitacoes/{id}/deletar(id=${solicitacao.id})}" class="btn btn-sm btn-danger">Deletar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

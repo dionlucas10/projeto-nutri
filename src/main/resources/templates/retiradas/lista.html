@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Retiradas</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Retiradas</h2>
+                <a href="/retiradas/novo" class="btn btn-primary mb-3">Nova Retirada</a>
+                
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Observações</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="retirada : ${retiradas}">
+                            <td th:text="${retirada.id}"></td>
+                            <td th:text="${#dates.format(retirada.dataRetirada, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${retirada.observacoes}"></td>
+                            <td>
+                                <a th:href="@{/retiradas/{id}/editar(id=${retirada.id})}" class="btn btn-sm btn-warning">Editar</a>
+                                <a th:href="@{/retiradas/{id}/deletar(id=${retirada.id})}" class="btn btn-sm btn-danger">Deletar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
