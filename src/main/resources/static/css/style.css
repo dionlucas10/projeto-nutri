@@ -58,7 +58,6 @@ body {
 }
 
 .hero {
-    padding: 4.5rem 0 3rem;
     text-align: center;
 }
 
@@ -167,9 +166,15 @@ body {
     margin: 0;
 }
 
+#relogio {
+    font-size: 48px;
+    font-family: monospace;
+    text-align: justify;
+}
+
 @media (max-width: 767px) {
     .hero {
-        padding-top: 3rem;
+        padding-top: 0rem;
     }
 
     .navbar-brand {
@@ -179,4 +184,9 @@ body {
     .hero-btn {
         width: 100%;
     }
+
+    #relogio {
+        text-align: center;
+    }
 }
+
