@@ -172,6 +172,12 @@ body {
     text-align: justify;
 }
 
+.container img{
+    width: 10%;
+    max-width: 100%;
+    height: auto;
+}
+
 @media (max-width: 767px) {
     .hero {
         padding-top: 0rem;
