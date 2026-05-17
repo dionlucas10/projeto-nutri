@@ -22,6 +22,17 @@ public class SolicitacaoServiceImpl implements SolicitacaoService {
     }
 
     @Override
+    public Solicitacao buscarPorId(Long id) {
+        return solicitacaoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Solicitação não encontrada com id: " + id));
+    }
+
+    @Override
+    public void deletar(Long id) {
+        solicitacaoRepository.deleteById(id);
+    }
+
+    @Override
     public List<Solicitacao> listarTodas() {
         return solicitacaoRepository.findAll();
     }

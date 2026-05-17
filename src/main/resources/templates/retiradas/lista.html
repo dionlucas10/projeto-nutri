@@ -7,7 +7,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{/fragments/header :: header}"></div>
     
     <div class="container mt-5">
         <div class="row">
@@ -27,7 +27,7 @@
                     <tbody>
                         <tr th:each="retirada : ${retiradas}">
                             <td th:text="${retirada.id}"></td>
-                            <td th:text="${#dates.format(retirada.dataRetirada, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${#temporals.format(retirada.dataRetirada, 'dd/MM/yyyy')}"></td>
                             <td th:text="${retirada.observacoes}"></td>
                             <td>
                                 <a th:href="@{/retiradas/{id}/editar(id=${retirada.id})}" class="btn btn-sm btn-warning">Editar</a>
@@ -40,6 +40,6 @@
         </div>
     </div>
     
-    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="~{/fragments/footer :: footer}"></div>
 </body>
 </html>

@@ -17,6 +17,11 @@ public class DoacaoController {
     private final DoacaoService doacaoService;
     private final UsuarioService usuarioService;
 
+    @GetMapping
+    public String raiz() {
+        return "redirect:/doacoes/listar";
+    }
+
     @GetMapping("/listar")
     public String listar(Model model) {
         model.addAttribute("doacoes", doacaoService.listarTodas());
@@ -45,13 +50,18 @@ public class DoacaoController {
         return "doacoes/form";
     }
 
-    @GetMapping("/deletar/{id}")
-    public String deletar(@PathVariable Long id) {
-        // Só permite deletar doações abertas
+    @GetMapping("/cancelar/{id}")
+    public String cancelar(@PathVariable Long id) {
         Doacao doacao = doacaoService.buscarPorId(id);
         if (doacao.getStatus() == StatusDoacao.ABERTA) {
             doacaoService.alterarStatus(id, StatusDoacao.CANCELADA);
         }
+        return "redirect:/doacoes/listar";
+    }
+
+    @GetMapping("/deletar/{id}")
+    public String deletar(@PathVariable Long id) {
+        doacaoService.deletar(id);
         return "redirect:/doacoes/listar";
     }
 }

@@ -14,6 +14,11 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
+    @GetMapping
+    public String raiz() {
+        return "redirect:/usuarios/listar";
+    }
+
     @GetMapping("/listar")
     public String listar(Model model) {
         model.addAttribute("usuarios", usuarioService.listarTodos());

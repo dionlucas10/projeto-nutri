@@ -52,4 +52,9 @@ public class DoacaoServiceImpl implements DoacaoService {
         doacao.setStatus(status);
         doacaoRepository.save(doacao);
     }
+
+    @Override
+    public void deletar(Long id) {
+        doacaoRepository.deleteById(id);
+    }
 }

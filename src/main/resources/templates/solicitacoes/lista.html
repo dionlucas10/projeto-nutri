@@ -7,7 +7,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{/fragments/header :: header}"></div>
     
     <div class="container mt-5">
         <div class="row">
@@ -29,7 +29,7 @@
                         <tr th:each="solicitacao : ${solicitacoes}">
                             <td th:text="${solicitacao.id}"></td>
                             <td th:text="${solicitacao.descricao}"></td>
-                            <td th:text="${#dates.format(solicitacao.dataSolicitacao, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${#temporals.format(solicitacao.dataSolicitacao, 'dd/MM/yyyy')}"></td>
                             <td th:text="${solicitacao.status}"></td>
                             <td>
                                 <a th:href="@{/solicitacoes/{id}/editar(id=${solicitacao.id})}" class="btn btn-sm btn-warning">Editar</a>
@@ -42,6 +42,6 @@
         </div>
     </div>
     
-    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="~{/fragments/footer :: footer}"></div>
 </body>
 </html>

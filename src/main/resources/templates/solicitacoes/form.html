@@ -7,7 +7,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{/fragments/header :: header}"></div>
     
     <div class="container mt-5">
         <div class="row">
@@ -20,7 +20,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="dataSolicitacao" class="form-label">Data da Solicitação</label>
-                        <input type="date" class="form-control" id="dataSolicitacao" th:field="*{dataSolicitacao}" required>
+                        <input type="datetime-local" class="form-control" id="dataSolicitacao" th:field="*{dataSolicitacao}" required>
                     </div>
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
@@ -37,6 +37,6 @@
         </div>
     </div>
     
-    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="~{/fragments/footer :: footer}"></div>
 </body>
 </html>

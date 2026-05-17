@@ -6,6 +6,7 @@ import br.com.nutriconecta.nutriconecta.repository.RetiradaRepository;
 import br.com.nutriconecta.nutriconecta.service.RetiradaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,5 +22,21 @@ public class RetiradaServiceImpl implements RetiradaService {
     @Override
     public Retirada buscarPorSolicitacao(Solicitacao solicitacao) {
         return retiradaRepository.findBySolicitacao(solicitacao);
+    }
+
+    @Override
+    public Retirada buscarPorId(Long id) {
+        return retiradaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Retirada não encontrada com id: " + id));
+    }
+
+    @Override
+    public List<Retirada> listarTodas() {
+        return retiradaRepository.findAll();
+    }
+
+    @Override
+    public void deletar(Long id) {
+        retiradaRepository.deleteById(id);
     }
 }

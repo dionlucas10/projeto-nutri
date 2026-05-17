@@ -12,6 +12,10 @@ public interface SolicitacaoService {
 
     List<Solicitacao> listarTodas();
 
+    Solicitacao buscarPorId(Long id);
+
+    void deletar(Long id);
+
     List<Solicitacao> listarPorInstituicao(Usuario instituicao);
 
     List<Solicitacao> listarPorDoacao(Doacao doacao);

@@ -1,7 +1,11 @@
 package br.com.nutriconecta.nutriconecta.service.impl;
 
+import br.com.nutriconecta.nutriconecta.model.Doacao;
+import br.com.nutriconecta.nutriconecta.model.Solicitacao;
 import br.com.nutriconecta.nutriconecta.model.Usuario;
 import br.com.nutriconecta.nutriconecta.repository.UsuarioRepository;
+import br.com.nutriconecta.nutriconecta.service.DoacaoService;
+import br.com.nutriconecta.nutriconecta.service.SolicitacaoService;
 import br.com.nutriconecta.nutriconecta.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +16,8 @@ import java.util.List;
 public class UsuarioServiceImpl implements UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final DoacaoService doacaoService;
+    private final SolicitacaoService solicitacaoService;
 
     @Override
     public long countInstituicoes() {
@@ -42,6 +48,20 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public void deletar(Long id) {
+        Usuario usuario = buscarPorId(id);
+
+        List<Doacao> doacoes = doacaoService.listarPorDoador(usuario);
+        doacoes.forEach(doacao -> {
+            doacao.setDoador(null);
+            doacaoService.salvar(doacao);
+        });
+
+        List<Solicitacao> solicitacoes = solicitacaoService.listarPorInstituicao(usuario);
+        solicitacoes.forEach(solicitacao -> {
+            solicitacao.setInstituicao(null);
+            solicitacaoService.salvar(solicitacao);
+        });
+
         usuarioRepository.deleteById(id);
     }
 }

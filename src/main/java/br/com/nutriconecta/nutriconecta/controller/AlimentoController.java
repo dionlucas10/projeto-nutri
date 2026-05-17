@@ -14,6 +14,11 @@ public class AlimentoController {
 
     private final AlimentoService alimentoService;
 
+    @GetMapping
+    public String raiz() {
+        return "redirect:/alimentos/listar";
+    }
+
     @GetMapping("/listar")
     public String listar(Model model) {
         model.addAttribute("alimentos", alimentoService.listarTodos());

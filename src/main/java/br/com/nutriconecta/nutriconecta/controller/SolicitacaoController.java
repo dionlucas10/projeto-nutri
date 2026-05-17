@@ -19,6 +19,11 @@ public class SolicitacaoController {
     private final DoacaoService doacaoService;
     private final UsuarioService usuarioService;
 
+    @GetMapping
+    public String raiz() {
+        return "redirect:/solicitacoes/listar";
+    }
+
     @GetMapping("/listar")
     public String listar(Model model) {
         model.addAttribute("solicitacoes", solicitacaoService.listarTodas());
@@ -48,6 +53,12 @@ public class SolicitacaoController {
     @GetMapping("/rejeitar/{id}")
     public String rejeitar(@PathVariable Long id) {
         solicitacaoService.alterarStatus(id, StatusSolicitacao.REJEITADA);
+        return "redirect:/solicitacoes/listar";
+    }
+
+    @GetMapping("/deletar/{id}")
+    public String deletar(@PathVariable Long id) {
+        solicitacaoService.deletar(id);
         return "redirect:/solicitacoes/listar";
     }
 }

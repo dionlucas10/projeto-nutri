@@ -20,4 +20,6 @@ public interface DoacaoService {
     List<Doacao> listarPorDoador(Usuario doador);
 
     void alterarStatus(Long id, StatusDoacao status);
+
+    void deletar(Long id);
 }
