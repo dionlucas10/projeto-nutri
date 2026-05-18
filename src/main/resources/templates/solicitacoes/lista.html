@@ -32,8 +32,8 @@
                             <td th:text="${#temporals.format(solicitacao.dataSolicitacao, 'dd/MM/yyyy')}"></td>
                             <td th:text="${solicitacao.status}"></td>
                             <td>
-                                <a th:href="@{/solicitacoes/{id}/editar(id=${solicitacao.id})}" class="btn btn-sm btn-warning">Editar</a>
-                                <a th:href="@{/solicitacoes/{id}/deletar(id=${solicitacao.id})}" class="btn btn-sm btn-danger">Deletar</a>
+                                <a th:href="@{/solicitacoes/editar/{id}(id=${solicitacao.id})}" class="btn btn-sm btn-warning">Editar</a>
+                                <a th:href="@{/solicitacoes/deletar/{id}(id=${solicitacao.id})}" class="btn btn-sm btn-danger">Deletar</a>
                             </td>
                         </tr>
                     </tbody>

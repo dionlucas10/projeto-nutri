@@ -44,6 +44,14 @@ public class SolicitacaoController {
         return "redirect:/solicitacoes/listar";
     }
 
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable Long id, Model model) {
+        model.addAttribute("solicitacao", solicitacaoService.buscarPorId(id));
+        model.addAttribute("doacoes", doacaoService.listarTodas());
+        model.addAttribute("instituicoes", usuarioService.listarTodos());
+        return "solicitacoes/form";
+    }
+
     @GetMapping("/aprovar/{id}")
     public String aprovar(@PathVariable Long id) {
         solicitacaoService.alterarStatus(id, StatusSolicitacao.APROVADA);

@@ -32,8 +32,8 @@
                             <td th:text="${alimento.categoria}"></td>
                             <td th:text="${alimento.unidadeMedida}"></td>
                             <td>
-                                <a th:href="@{/alimentos/{id}/editar(id=${alimento.id})}" class="btn btn-sm btn-warning">Editar</a>
-                                <a th:href="@{/alimentos/{id}/deletar(id=${alimento.id})}" class="btn btn-sm btn-danger">Deletar</a>
+                                <a th:href="@{/alimentos/editar/{id}(id=${alimento.id})}" class="btn btn-sm btn-warning">Editar</a>
+                                <a th:href="@{/alimentos/deletar/{id}(id=${alimento.id})}" class="btn btn-sm btn-danger">Deletar</a>
                             </td>
                         </tr>
                     </tbody>
